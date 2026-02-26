@@ -1,34 +1,429 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="GoAppsters Private Limited — Your long-term technology partner. Full Stack Development, AI, Blockchain, Cloud Architecture.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<title>GoAppsters</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>GoAppsters Private Limited</title>
 <style>
-	body{ 
-		background-color: rgb(247, 247, 239);
-		font-family: 'Lora', serif;
-	}
-	h4{ margin: 30px auto;}
-	html, body, .container, .row{ height: 100%;}
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --border: rgba(255,255,255,0.07);
+    --accent: #c8ff00;
+    --accent2: #00c8ff;
+    --text: #f0f0f0;
+    --muted: #888;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; opacity: 0.15; }
+  .orb-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -100px; }
+  .orb-2 { width: 400px; height: 400px; background: var(--accent2); bottom: 10%; left: -100px; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 24px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,15,0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--accent); }
+  .nav-contact { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-contact:hover { color: var(--accent); }
+
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 120px 48px 80px;
+    position: relative; z-index: 1;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .hero-content { max-width: 780px; }
+
+  .hero-badge {
+    display: inline-block; font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid rgba(200,255,0,0.3);
+    padding: 6px 14px; border-radius: 100px; margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(3rem, 7vw, 6rem); line-height: 1.0;
+    letter-spacing: -0.03em; margin-bottom: 28px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .hero h1 em { font-style: normal; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
+
+  .hero-sub {
+    font-size: 1.15rem; color: var(--muted); max-width: 520px;
+    margin-bottom: 48px; animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #0a0a0f;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 16px 32px; border-radius: 4px; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,255,0,0.3); }
+
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 80px;
+    padding-top: 40px; border-top: 1px solid var(--border);
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.2rem; color: var(--text); line-height: 1; }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+
+  section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
+
+  .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+
+  .section-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .about-body { font-size: 1rem; color: var(--muted); line-height: 1.85; }
+  .about-body p + p { margin-top: 20px; }
+  .about-body strong { color: var(--text); font-weight: 500; }
+  .about-highlights { display: flex; flex-direction: column; gap: 2px; }
+
+  .highlight-item {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 24px 28px; position: relative; overflow: hidden; transition: background 0.2s;
+  }
+  .highlight-item:hover { background: #16161f; }
+  .highlight-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+  .highlight-item h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 4px; }
+  .highlight-item p { font-size: 0.825rem; color: var(--muted); }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--border); border: 1px solid var(--border); }
+
+  .service-card { background: var(--surface); padding: 36px 32px; transition: background 0.3s; position: relative; overflow: hidden; }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+  .service-card:hover { background: #16161f; }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon { font-size: 1.8rem; margin-bottom: 20px; display: block; }
+  .service-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; color: var(--text); }
+  .service-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+  /* TECH STACK */
+  .tech-categories { display: flex; flex-direction: column; gap: 36px; }
+  .tech-category h4 { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .tech-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tech-pill { padding: 8px 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; font-size: 0.825rem; color: var(--text); transition: all 0.2s; }
+  .tech-pill:hover { border-color: rgba(200,255,0,0.4); color: var(--accent); background: rgba(200,255,0,0.04); }
+  .tech-pill.featured { border-color: rgba(200,255,0,0.25); color: var(--accent); }
+
+  /* INDUSTRIES */
+  .industries-wrap { display: flex; flex-wrap: wrap; gap: 12px; }
+  .industry-pill { padding: 10px 22px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.875rem; color: var(--muted); transition: all 0.2s; }
+  .industry-pill:hover { border-color: rgba(200,255,0,0.4); color: var(--accent); background: rgba(200,255,0,0.05); }
+
+  /* CONTACT */
+  .contact-wrap { background: var(--surface); border: 1px solid var(--border); padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .contact-wrap h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px; }
+  .contact-wrap p { color: var(--muted); font-size: 0.95rem; }
+  .contact-details { display: flex; flex-direction: column; gap: 20px; }
+  .contact-item { display: flex; flex-direction: column; gap: 4px; }
+  .contact-item-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .contact-item-value { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; color: var(--text); }
+  .contact-item-value a { color: var(--accent); text-decoration: none; }
+  .contact-item-value a:hover { text-decoration: underline; }
+
+  footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 0.8rem; color: var(--muted); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0 48px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    section { padding: 60px 24px; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .contact-wrap { grid-template-columns: 1fr; padding: 36px 28px; gap: 36px; }
+    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    .divider { margin: 0 24px; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
-	<div class="row align-items-center d-flex">
-		<div class="col text-center lh-lg">
-			<h1>GoAppsters</h1>
-			<h4>Web Development</h3>
-			<h4>Mobile App Development</h3>
-			<h4>Automation with <a href="">Make</a></h3>
-			<p>goappsters at gmail.com</p>
-		</div>
-	</div>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <a href="#" class="nav-logo">Go<span>Appsters</span></a>
+  <a href="mailto:goappsters@gmail.com" class="nav-contact">goappsters@gmail.com</a>
+</nav>
+
+<div style="position:relative;z-index:1;">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Next-Gen Tech Development</div>
+    <h1>We Build <em>Digital</em> Products That Scale</h1>
+    <p class="hero-sub">GoAppsters is a technology partner for startups, small businesses and enterprises — delivering full stack development, AI integration, blockchain solutions and cloud architecture since 2001.</p>
+    <a href="mailto:goappsters@gmail.com" class="hero-cta">Start a Conversation →</a>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">24<span>+</span></div>
+        <div class="stat-label">Years in Tech</div>
+      </div>
+      <div>
+        <div class="stat-num">14<span>+</span></div>
+        <div class="stat-label">Years Longest Partnership</div>
+      </div>
+      <div>
+        <div class="stat-num">8</div>
+        <div class="stat-label">Countries Trained In</div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who We Are</div>
+  <h2 class="section-title">A Technology Partner,<br>Not Just a Dev Shop</h2>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>GoAppsters Private Limited was founded on a simple belief — businesses deserve a technology partner that thinks beyond the brief. We don't just write code. We understand your business, consult on the right approach, and build solutions that last.</p>
+      <p>Our journey started in 2001 with Visual Basic and early .NET, growing through every major technology wave — XML and structured publishing, mobile, cloud, blockchain, and now AI. That evolution isn't accidental. We stay at the frontier because our clients need us to.</p>
+      <p>We have delivered <strong>digital publishing training across 8 countries</strong>, led development teams for specialised domain applications, managed cloud infrastructure for businesses handling GB-scale file delivery, and built AI-powered, blockchain-integrated products — often combining all of these in a single solution.</p>
+      <p>Our longest client relationship spans <strong>over 14 years</strong>. That's not a coincidence — it's the result of being a partner people trust with their entire technology stack, not just a project.</p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-item">
+        <h4>Long-Term Thinking</h4>
+        <p>We build for scale and sustainability, not quick delivery. Our oldest active client partnership has lasted over 14 years.</p>
+      </div>
+      <div class="highlight-item">
+        <h4>Technology Leadership</h4>
+        <p>We consult, architect and lead — not just execute. If you need someone to guide your product decisions, we step into that role.</p>
+      </div>
+      <div class="highlight-item">
+        <h4>Full Ownership</h4>
+        <p>From database modelling to cloud infrastructure to customer support — we take full ownership across the stack so you don't have to manage multiple vendors.</p>
+      </div>
+      <div class="highlight-item">
+        <h4>Always Current</h4>
+        <p>24 years in tech means we've seen trends come and go. When we adopt something new — like AI or blockchain — it's because it genuinely delivers value.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Full-Spectrum<br>Technology Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">⚡</span>
+      <h3>Full Stack Development</h3>
+      <p>End-to-end web and mobile application development using the latest technology stacks, built for performance and scale.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🤖</span>
+      <h3>AI-Powered Solutions</h3>
+      <p>Integrating AI into real products — image recognition, intelligent automation, AI agents and AI-assisted development pipelines that ship to production.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔗</span>
+      <h3>Blockchain & Web3</h3>
+      <p>Crypto token integration, blockchain-based application architecture and Web3 product development.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">☁️</span>
+      <h3>Cloud Architecture (AWS)</h3>
+      <p>Server infrastructure, WAF, load balancing, large-scale file delivery systems and full AWS account management.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📱</span>
+      <h3>Mobile App Development</h3>
+      <p>Native and cross-platform mobile applications for iOS and Android, from concept through to production.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🧭</span>
+      <h3>Tech Leadership & Consulting</h3>
+      <p>For businesses without an in-house tech team — we consult on architecture, lead developers and guide product decisions from the inside.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🛒</span>
+      <h3>Ecommerce Development</h3>
+      <p>Custom ecommerce platforms, marketplace development and digital product delivery infrastructure built for real scale.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🗄️</span>
+      <h3>Database Architecture</h3>
+      <p>Selecting and modelling the right database for the right problem — from relational to graph databases like Neo4j for complex relationship-driven applications.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TECH STACK -->
+<section id="tech">
+  <div class="section-label">Technology</div>
+  <h2 class="section-title">Our Tech Stack</h2>
+  <div class="tech-categories">
+    <div class="tech-category">
+      <h4>AI & Machine Learning</h4>
+      <div class="tech-pills">
+        <span class="tech-pill featured">AWS Rekognition</span>
+        <span class="tech-pill featured">OpenAI / GPT</span>
+        <span class="tech-pill featured">AI Agents</span>
+        <span class="tech-pill">Computer Vision</span>
+        <span class="tech-pill">Image Classification</span>
+        <span class="tech-pill">AI-Assisted Development</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <h4>Blockchain & Web3</h4>
+      <div class="tech-pills">
+        <span class="tech-pill featured">Solidity</span>
+        <span class="tech-pill featured">Crypto Token Development</span>
+        <span class="tech-pill">Smart Contracts</span>
+        <span class="tech-pill">Web3 Integration</span>
+        <span class="tech-pill">DApp Development</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <h4>Cloud & Infrastructure</h4>
+      <div class="tech-pills">
+        <span class="tech-pill featured">AWS EC2</span>
+        <span class="tech-pill featured">AWS WAF</span>
+        <span class="tech-pill featured">Load Balancing</span>
+        <span class="tech-pill">AWS S3</span>
+        <span class="tech-pill">CloudFront CDN</span>
+        <span class="tech-pill">Large File Delivery</span>
+        <span class="tech-pill">Server Management</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <h4>Web & Mobile Development</h4>
+      <div class="tech-pills">
+        <span class="tech-pill featured">React</span>
+        <span class="tech-pill featured">Node.js</span>
+        <span class="tech-pill featured">React Native</span>
+        <span class="tech-pill">REST APIs</span>
+        <span class="tech-pill">PHP</span>
+        <span class="tech-pill">.NET</span>
+        <span class="tech-pill">JavaScript / TypeScript</span>
+        <span class="tech-pill">Python</span>
+      </div>
+    </div>
+    <div class="tech-category">
+      <h4>Databases</h4>
+      <div class="tech-pills">
+        <span class="tech-pill featured">Neo4j (Graph DB)</span>
+        <span class="tech-pill">MySQL</span>
+        <span class="tech-pill">PostgreSQL</span>
+        <span class="tech-pill">MongoDB</span>
+        <span class="tech-pill">Redis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="section-label">Industries</div>
+  <h2 class="section-title">Sectors We've<br>Worked Across</h2>
+  <div class="industries-wrap">
+    <div class="industry-pill">Music & Digital Instruments</div>
+    <div class="industry-pill">Social & Dating</div>
+    <div class="industry-pill">Waste Management & Field Ops</div>
+    <div class="industry-pill">Logistics & Mobility</div>
+    <div class="industry-pill">Actuarial & Financial Services</div>
+    <div class="industry-pill">Scrap & Recycling Marketplace</div>
+    <div class="industry-pill">Digital Publishing</div>
+    <div class="industry-pill">Crypto & Web3</div>
+    <div class="industry-pill">Ecommerce & Retail</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div>
+      <div class="section-label">Get In Touch</div>
+      <h2>Let's Build Something Together</h2>
+      <p>Whether you have a product idea, need a technology partner, or want to add AI and cloud capabilities to your existing systems — we'd love to hear from you.</p>
+    </div>
+    <div class="contact-details">
+      <div class="contact-item">
+        <span class="contact-item-label">Company</span>
+        <span class="contact-item-value">GoAppsters Private Limited</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Email</span>
+        <span class="contact-item-value"><a href="mailto:goappsters@gmail.com">info@goappsters.in</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Specialisations</span>
+        <span class="contact-item-value" style="font-size:0.875rem;font-weight:400;color:var(--muted);">Full Stack · AI · Blockchain · AWS · Mobile</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 GoAppsters Private Limited. All rights reserved.</p>
+  <p>Building Digital Products Since 2001</p>
+</footer>
+
 </body>
 </html>
