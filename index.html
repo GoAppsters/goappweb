@@ -20,6 +20,14 @@
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W0GXQTQZMV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W0GXQTQZMV');
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -64,8 +72,8 @@
     <h1 id="hero-h">Software for businesses that don't have a tech team.</h1>
     <p class="lede">I build web and mobile apps in days, then run them for years. 24 years in tech, one client relationship that's lasted 14 of them.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://wa.me/919811198523?text=Hi%20Amit%2C%20I%20found%20you%20via%20goappsters.in%20and%20I%27d%20like%20to%20talk%20about%20" target="_blank" rel="noopener">Message on WhatsApp</a>
-      <a class="btn btn-secondary" href="https://calendar.app.google/58iZhmRqDrZFdcXd8" target="_blank" rel="noopener">Book a 20-minute call</a>
+      <a class="btn btn-primary" data-cta="whatsapp-hero" href="https://wa.me/919811198523?text=Hi%20Amit%2C%20I%20found%20you%20via%20goappsters.in%20and%20I%27d%20like%20to%20talk%20about%20" target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn btn-secondary" data-cta="booking-hero" href="https://calendar.app.google/58iZhmRqDrZFdcXd8" target="_blank" rel="noopener">Book a 20-minute call</a>
     </div>
     <p class="small">Or email <a href="mailto:info@goappsters.in">info@goappsters.in</a></p>
   </section>
@@ -208,8 +216,8 @@
     <h2 id="contact-h">Start with a message</h2>
     <p class="intro">Tell me what you're trying to get done. If I'm not the right person, I'll say so and point you to who is.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://wa.me/919811198523?text=Hi%20Amit%2C%20I%20found%20you%20via%20goappsters.in%20and%20I%27d%20like%20to%20talk%20about%20" target="_blank" rel="noopener">Message on WhatsApp</a>
-      <a class="btn btn-secondary" href="https://calendar.app.google/58iZhmRqDrZFdcXd8" target="_blank" rel="noopener">Book a 20-minute call</a>
+      <a class="btn btn-primary" data-cta="whatsapp-contact" href="https://wa.me/919811198523?text=Hi%20Amit%2C%20I%20found%20you%20via%20goappsters.in%20and%20I%27d%20like%20to%20talk%20about%20" target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn btn-secondary" data-cta="booking-contact" href="https://calendar.app.google/58iZhmRqDrZFdcXd8" target="_blank" rel="noopener">Book a 20-minute call</a>
     </div>
     <p class="small">Or email <a href="mailto:info@goappsters.in">info@goappsters.in</a></p>
   </section>
@@ -221,5 +229,11 @@
   <p>Building software since 2001.</p>
 </footer>
 
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-cta]');
+    if (a && typeof gtag === 'function') gtag('event', 'cta_click', { cta: a.getAttribute('data-cta') });
+  });
+</script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # goappsters.in
 
-Single-page static site for GoAppsters Private Limited. No framework, no build step, no JavaScript, no analytics.
+Single-page static site for GoAppsters Private Limited. No framework, no build step. The only JavaScript is the Google Analytics tag and a four-line click tracker.
 
 ## Files
 
@@ -62,6 +62,6 @@ python3 -m http.server 8766 & npx lighthouse@12 http://127.0.0.1:8766/ --view --
 
 Heading order is one `h1`, one `h2` per section, `h3` for cards. Every colour pair used for text was checked against WCAG AA (lowest ratio 4.85:1, orange accent on the light background). Focus states are a 3 px accent outline. Placeholder image boxes carry `role="img"` and an `aria-label` so screen readers don't hit empty regions.
 
-## Analytics (optional, not installed)
+## Analytics
 
-None is included and none is needed for the site's purpose, since visitors arrive from your own outreach. If you later want to know whether people click WhatsApp or the booking link, a privacy-respecting option is Plausible (cookie-free, no consent banner needed) or a self-hosted Umami. Either is a single `<script>` tag before `</body>`, and you can track the two buttons with a `data-` attribute or a class. Adding one script will cost a few Lighthouse performance points on mobile.
+Google Analytics 4 is installed (measurement ID `G-W0GXQTQZMV`) via the standard gtag snippet in `<head>`. A small inline script at the end of `<body>` sends a `cta_click` event with a `cta` parameter (`whatsapp-hero`, `whatsapp-contact`, `booking-hero`, `booking-contact`) when a visitor taps one of the four buttons. In GA4, mark `cta_click` as a key event under Admin, then Events, to see conversions. GA4 sets cookies, so add a consent notice if you start getting meaningful EU traffic.
