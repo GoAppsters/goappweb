@@ -1,429 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="GoAppsters Private Limited — Your long-term technology partner. Full Stack Development, AI, Blockchain, Cloud Architecture.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<title>GoAppsters Private Limited</title>
-<style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --border: rgba(255,255,255,0.07);
-    --accent: #ffa200;
-    --accent2: #00c8ff;
-    --text: #f0f0f0;
-    --muted: #888;
+<title>GoAppsters — Software for businesses that don't have a tech team</title>
+<meta name="description" content="Founder-led software company. I build web and mobile apps in days, then run them for years. 24 years in tech, one client relationship that's lasted 14 of them.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131316" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://goappsters.in/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GoAppsters Private Limited">
+<meta property="og:title" content="Software for businesses that don't have a tech team">
+<meta property="og:description" content="I build web and mobile apps in days, then run them for years. Founder-led, since 2001.">
+<meta property="og:url" content="https://goappsters.in/">
+<meta property="og:image" content="https://goappsters.in/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Organization", "ProfessionalService"],
+  "name": "GoAppsters Private Limited",
+  "url": "https://goappsters.in/",
+  "email": "info@goappsters.in",
+  "foundingDate": "2001",
+  "founder": {
+    "@type": "Person",
+    "name": "Amit Verma",
+    "sameAs": ["https://www.linkedin.com/in/amitverm/"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Greater Noida",
+    "addressRegion": "Uttar Pradesh",
+    "addressCountry": "IN"
   }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.4;
-  }
-
-  .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; opacity: 0.15; }
-  .orb-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -100px; }
-  .orb-2 { width: 400px; height: 400px; background: var(--accent2); bottom: 10%; left: -100px; }
-
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 24px 48px;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(10,10,15,0.8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
-  .nav-logo span { color: var(--accent); }
-  .nav-contact { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .nav-contact:hover { color: var(--accent); }
-
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    padding: 120px 48px 80px;
-    position: relative; z-index: 1;
-    max-width: 1200px; margin: 0 auto;
-  }
-
-  .hero-content { max-width: 780px; }
-
-  .hero-badge {
-    display: inline-block; font-size: 0.75rem; font-weight: 500;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--accent); border: 1px solid rgba(200,255,0,0.3);
-    padding: 6px 14px; border-radius: 100px; margin-bottom: 32px;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .hero h1 {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: clamp(3rem, 7vw, 6rem); line-height: 1.0;
-    letter-spacing: -0.03em; margin-bottom: 28px;
-    animation: fadeUp 0.6s ease 0.1s both;
-  }
-
-  .hero h1 em { font-style: normal; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
-
-  .hero-sub {
-    font-size: 1.15rem; color: var(--muted); max-width: 520px;
-    margin-bottom: 48px; animation: fadeUp 0.6s ease 0.2s both;
-  }
-
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--accent); color: #0a0a0f;
-    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem;
-    letter-spacing: 0.05em; text-transform: uppercase;
-    padding: 16px 32px; border-radius: 4px; text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    animation: fadeUp 0.6s ease 0.3s both;
-  }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,255,0,0.3); }
-
-  .hero-stats {
-    display: flex; gap: 48px; margin-top: 80px;
-    padding-top: 40px; border-top: 1px solid var(--border);
-    animation: fadeUp 0.6s ease 0.4s both;
-  }
-
-  .stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.2rem; color: var(--text); line-height: 1; }
-  .stat-num span { color: var(--accent); }
-  .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
-
-  section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
-
-  .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-
-  .section-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 48px; }
-
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-  .about-body { font-size: 1rem; color: var(--muted); line-height: 1.85; }
-  .about-body p + p { margin-top: 20px; }
-  .about-body strong { color: var(--text); font-weight: 500; }
-  .about-highlights { display: flex; flex-direction: column; gap: 2px; }
-
-  .highlight-item {
-    background: var(--surface); border: 1px solid var(--border);
-    padding: 24px 28px; position: relative; overflow: hidden; transition: background 0.2s;
-  }
-  .highlight-item:hover { background: #16161f; }
-  .highlight-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
-  .highlight-item h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 4px; }
-  .highlight-item p { font-size: 0.825rem; color: var(--muted); }
-
-  /* SERVICES */
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--border); border: 1px solid var(--border); }
-
-  .service-card { background: var(--surface); padding: 36px 32px; transition: background 0.3s; position: relative; overflow: hidden; }
-  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
-  .service-card:hover { background: #16161f; }
-  .service-card:hover::after { transform: scaleX(1); }
-  .service-icon { font-size: 1.8rem; margin-bottom: 20px; display: block; }
-  .service-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; color: var(--text); }
-  .service-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
-
-  /* TECH STACK */
-  .tech-categories { display: flex; flex-direction: column; gap: 36px; }
-  .tech-category h4 { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-  .tech-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tech-pill { padding: 8px 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; font-size: 0.825rem; color: var(--text); transition: all 0.2s; }
-  .tech-pill:hover { border-color: rgba(200,255,0,0.4); color: var(--accent); background: rgba(200,255,0,0.04); }
-  .tech-pill.featured { border-color: rgba(200,255,0,0.25); color: var(--accent); }
-
-  /* INDUSTRIES */
-  .industries-wrap { display: flex; flex-wrap: wrap; gap: 12px; }
-  .industry-pill { padding: 10px 22px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.875rem; color: var(--muted); transition: all 0.2s; }
-  .industry-pill:hover { border-color: rgba(200,255,0,0.4); color: var(--accent); background: rgba(200,255,0,0.05); }
-
-  /* CONTACT */
-  .contact-wrap { background: var(--surface); border: 1px solid var(--border); padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-  .contact-wrap h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px; }
-  .contact-wrap p { color: var(--muted); font-size: 0.95rem; }
-  .contact-details { display: flex; flex-direction: column; gap: 20px; }
-  .contact-item { display: flex; flex-direction: column; gap: 4px; }
-  .contact-item-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
-  .contact-item-value { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; color: var(--text); }
-  .contact-item-value a { color: var(--accent); text-decoration: none; }
-  .contact-item-value a:hover { text-decoration: underline; }
-
-  footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
-  footer p { font-size: 0.8rem; color: var(--muted); }
-  .divider { border: none; border-top: 1px solid var(--border); margin: 0 48px; }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-
-  @media (max-width: 768px) {
-    nav { padding: 20px 24px; }
-    .hero { padding: 100px 24px 60px; }
-    section { padding: 60px 24px; }
-    .hero-stats { gap: 24px; flex-wrap: wrap; }
-    .about-grid { grid-template-columns: 1fr; gap: 36px; }
-    .contact-wrap { grid-template-columns: 1fr; padding: 36px 28px; gap: 36px; }
-    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
-    .divider { margin: 0 24px; }
-  }
-</style>
+}
+</script>
 </head>
 <body>
+<a href="#work" class="skip-link">Skip to content</a>
 
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="wordmark" href="#top" aria-label="GoAppsters home">Go<span>Appsters</span></a>
+    <nav aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#offers">Offers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-<nav>
-  <a href="#" class="nav-logo">Go<span>Appsters</span></a>
-  <a href="mailto:info@goappsters.in" class="nav-contact">info@goappsters.in</a>
-</nav>
+<main id="top">
 
-<div style="position:relative;z-index:1;">
+  <!-- 1. Hero -->
+  <section class="hero wrap" aria-labelledby="hero-h">
+    <p class="eyebrow">GoAppsters Private Limited · Founder-led · Since 2001</p>
+    <h1 id="hero-h">Software for businesses that don't have a tech team.</h1>
+    <p class="lede">I build web and mobile apps in days, then run them for years. 24 years in tech, one client relationship that's lasted 14 of them.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/919811198523?text=Hi%20Amit%2C%20I%20found%20you%20via%20goappsters.in%20and%20I%27d%20like%20to%20talk%20about%20" target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn btn-secondary" href="https://calendar.app.google/58iZhmRqDrZFdcXd8" target="_blank" rel="noopener">Book a 20-minute call</a>
+    </div>
+    <p class="small">Or email <a href="mailto:info@goappsters.in">info@goappsters.in</a></p>
+  </section>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">Next-Gen Tech Development</div>
-    <h1>We Build <em>Digital</em> Products That Scale</h1>
-    <p class="hero-sub">GoAppsters is a technology partner for startups, small businesses and enterprises — delivering full stack development, AI integration, blockchain solutions and cloud architecture since 2001.</p>
-    <a href="mailto:info@goappsters.in" class="hero-cta">Start a Conversation →</a>
-    <div class="hero-stats">
+  <!-- 2. Proof -->
+  <section id="work" class="section wrap" aria-labelledby="work-h">
+    <h2 id="work-h">Work you can verify</h2>
+
+    <article class="card card-feature">
+      <div class="card-body">
+        <h3>Kaal Jyoti — Vedic astrology calculator (Android)</h3>
+        <p>Designed, built, and published by me. Live on Google Play, no ads, no tracking. Precise charts computed on-device: D1–D60 divisional charts, 47 ayanamsas, three dasha systems, customisable dashboard, PDF export. Growing organically with no marketing.</p>
+        <p class="links">
+          <a href="https://play.google.com/store/apps/details?id=com.kaaljyoti" target="_blank" rel="noopener">Play Store</a>
+        </p>
+      </div>
+      <figure class="shots">
+        <img src="images/kaal-jyoti-chart.webp" width="400" height="898" alt="Kaal Jyoti birth chart screen: North Indian style chart with planetary positions table" loading="lazy" decoding="async">
+        <img src="images/kaal-jyoti-dasha.webp" width="400" height="898" alt="Kaal Jyoti dasha periods screen: Vimshottari chain from mahadasha to pran dasha" loading="lazy" decoding="async">
+        <img src="images/kaal-jyoti-export.webp" width="400" height="898" alt="Kaal Jyoti export screen: choosing modules to include in a PDF report" loading="lazy" decoding="async">
+        <figcaption class="visually-hidden">Three screens from the Kaal Jyoti Android app</figcaption>
+      </figure>
+    </article>
+
+    <article class="card card-feature flip">
+      <div class="card-body">
+        <h3>Samudrik — record-keeping for palmistry practitioners (Android and iOS)</h3>
+        <p>My second app as designer, builder, and publisher, on Google Play and the App Store. Practitioners capture palm images in seconds, keep a profile per person, attach life events to look back on later, and discuss plates with peers. Uploaded images are tagged automatically with AI. Clients can submit their details and palm photos through a personal intake link before a session. No ads, no data selling.</p>
+        <p class="links">
+          <a href="https://play.google.com/store/apps/details?id=com.samudrik.app" target="_blank" rel="noopener">Play Store</a>
+          <a href="https://apps.apple.com/app/samudrik/id6764101333" target="_blank" rel="noopener">App Store</a>
+          <a href="https://samudrik.app" target="_blank" rel="noopener">samudrik.app</a>
+        </p>
+      </div>
+      <figure class="shots">
+        <img src="images/samudrik-records.webp" width="400" height="866" alt="Samudrik records screen: searchable list of people with their hand images" loading="lazy" decoding="async">
+        <img src="images/samudrik-tags.webp" width="400" height="866" alt="Samudrik palm image screen with automatically generated keyword tags and notes" loading="lazy" decoding="async">
+        <img src="images/samudrik-profile.webp" width="400" height="866" alt="Samudrik person profile showing several tagged hand images" loading="lazy" decoding="async">
+        <figcaption class="visually-hidden">Three screens from the Samudrik app</figcaption>
+      </figure>
+    </article>
+
+    <div class="grid-3">
+      <article class="card">
+        <h3>14 years with Sonokinetic</h3>
+        <p>Sonokinetic makes sample libraries and virtual instruments for media composers. For 14 years I have handled everything web-related for them: all web development, the Sonokinetic Manager app, and the support around both. I also run their AWS infrastructure: delivery of multi-gigabyte sample libraries, WAF, load balancing, and full account management. One client, 14 years, still going.</p>
+        <p class="links">
+          <a href="https://sonokinetic.net" target="_blank" rel="noopener">sonokinetic.net</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Pave — the backend behind a cab-booking business</h3>
+        <p>Pave runs a chauffeur-driven electric cab service across Delhi, Noida, and Gurugram: airport transfers, 4- and 8-hour packages, and outstation trips. I built the entire backend that their customer app and operations dashboard run on: bookings and pricing with airport and flat-rate zones and discounts, driver assignment and live GPS tracking, Razorpay payments, WhatsApp and SMS notifications, and role-based access for staff. Django and PostgreSQL on AWS, with automated tests and deployment. Built from scratch in 2025 and extended ever since.</p>
+        <p class="links">
+          <a href="https://ridewithpave.com" target="_blank" rel="noopener">ridewithpave.com</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Recycle Jaipur — scrap-selling marketplace</h3>
+        <p>A marketplace app for selling scrap, released in collaboration with the Jaipur government. I built the whole app and the website.</p>
+        <p class="status-line"><span class="status">No longer live</span></p>
+      </article>
+    </div>
+    <h3 class="list-heading">More work, past and present</h3>
+    <ul class="worklist">
+      <li><strong>Infrastructure and migrations</strong> — Neo4j graph database server setup; FileMaker migration from a very old version to the current one.</li>
+      <li><strong>Dropd</strong> — Web3-based dating platform. Served as CTO: led the development team and owned product and technical decisions, including automated profile-photo verification built on AWS Rekognition. <span class="status">No longer live</span></li>
+      <li>One new product currently in development, not yet public.</li>
+    </ul>
+    <p class="small">Most client work is under contract, so not everything is shown here. Ask on a call and I'll walk you through the examples closest to what you need.</p>
+  </section>
+
+  <!-- 3. What you can buy -->
+  <section id="offers" class="section wrap" aria-labelledby="offers-h">
+    <h2 id="offers-h">Three ways to work with me</h2>
+    <p class="intro">Fixed scope and fixed price where possible, so you know what you're getting before we start.</p>
+
+    <div class="grid-3">
+      <article class="card offer">
+        <h3>App in 14 days</h3>
+        <p>A single-purpose mobile or web app — booking, ledger, tracker, catalogue, internal tool — designed, built, and submitted to the Play Store or deployed to the web. Fixed scope, fixed price.</p>
+        <p class="small">Kaal Jyoti and Samudrik above are examples of this kind of build.</p>
+        <p class="price">Starting at ₹1,50,000</p>
+      </article>
+
+      <article class="card offer">
+        <h3>Internal tools and automation</h3>
+        <p>Dashboards, WhatsApp notifications, portal and email integrations, connecting the systems you already use. Delivered in one- to two-week pieces so you see results quickly.</p>
+        <p class="price">From ₹40,000 per piece</p>
+      </article>
+
+      <article class="card offer">
+        <h3>Ongoing developer retainer</h3>
+        <p>For businesses that have software but no developer: a fixed block of hours each month for maintenance, features, infrastructure, and support. You get a senior engineer without hiring one.</p>
+        <p class="price">From ₹60,000 per month</p>
+      </article>
+    </div>
+
+    <p class="footnote">Need a requirements document or technical direction before building? I write specs and lead product decisions too — <a href="#contact">ask</a>. App-store developer fees, hosting, and third-party API costs are billed at cost.</p>
+  </section>
+
+  <!-- 4. How I work -->
+  <section id="how" class="section wrap" aria-labelledby="how-h">
+    <h2 id="how-h">Ship fast, stay for years</h2>
+    <ul class="points">
+      <li>You talk to the person who builds it. No account managers, no hand-offs.</li>
+      <li>AI-assisted development means days, not months, without cutting corners on architecture.</li>
+      <li>I take ownership across the stack: database, backend, mobile, cloud, support.</li>
+      <li>Clients stay because things keep working. My longest relationship is 14 years and counting.</li>
+    </ul>
+  </section>
+
+  <!-- 5. Capabilities -->
+  <section id="capabilities" class="section wrap" aria-labelledby="cap-h">
+    <h2 id="cap-h">Capabilities</h2>
+    <p>Mobile (React Native, Flutter), web (React, Node.js, TypeScript, Django, PHP, .NET, Python), databases (PostgreSQL, MySQL, MongoDB, Redis, Neo4j), cloud (AWS EC2, S3, CloudFront, WAF, load balancing, large-file delivery), and AI integration (image recognition and classification, OpenAI-based agents and automation, AI-assisted development pipelines). Ecommerce and marketplace builds, and digital-publishing systems.</p>
+    <ul class="tags" aria-label="Technologies">
+      <li>React Native</li><li>Flutter</li><li>React</li><li>Node.js</li><li>TypeScript</li><li>PHP</li><li>.NET</li><li>Python</li><li>Django</li><li>PostgreSQL</li><li>MySQL</li><li>MongoDB</li><li>Redis</li><li>Neo4j</li><li>AWS EC2</li><li>S3</li><li>CloudFront</li><li>WAF</li><li>Load balancing</li><li>Large-file delivery</li><li>Image recognition</li><li>OpenAI agents</li><li>AI-assisted development</li><li>Ecommerce</li><li>Marketplaces</li><li>Digital publishing</li>
+    </ul>
+    <p class="small">Through partners, I also offer security reviews and database performance tuning.</p>
+  </section>
+
+  <!-- 6. About the founder -->
+  <section id="about" class="section wrap" aria-labelledby="about-h">
+    <div class="about">
       <div>
-        <div class="stat-num">24<span>+</span></div>
-        <div class="stat-label">Years in Tech</div>
-      </div>
-      <div>
-        <div class="stat-num">14<span>+</span></div>
-        <div class="stat-label">Years Longest Partnership</div>
-      </div>
-      <div>
-        <div class="stat-num">8</div>
-        <div class="stat-label">Countries Trained In</div>
+        <h2 id="about-h">Amit Verma</h2>
+        <p>I started in 2001 with Visual Basic and early .NET and have worked through every major shift since — XML and structured publishing, mobile, cloud, and now AI. I've trained publishing teams in eight countries and led development teams for specialised domain applications. GoAppsters is founder-led on purpose: the senior person you talk to is the one who does the work. Alongside client work I build privacy-first tools for practitioners of traditional Indian disciplines — Kaal Jyoti for Jyotish and Samudrik for palmistry — with no ads and no data selling. Based in Greater Noida and Delhi, India; working with clients in India and abroad.</p>
+        <p class="links">
+          <a href="https://www.linkedin.com/in/amitverm/" target="_blank" rel="noopener me">LinkedIn</a>
+        </p>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<hr class="divider">
+  <!-- 7. Contact -->
+  <section id="contact" class="section wrap contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Start with a message</h2>
+    <p class="intro">Tell me what you're trying to get done. If I'm not the right person, I'll say so and point you to who is.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/919811198523?text=Hi%20Amit%2C%20I%20found%20you%20via%20goappsters.in%20and%20I%27d%20like%20to%20talk%20about%20" target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn btn-secondary" href="https://calendar.app.google/58iZhmRqDrZFdcXd8" target="_blank" rel="noopener">Book a 20-minute call</a>
+    </div>
+    <p class="small">Or email <a href="mailto:info@goappsters.in">info@goappsters.in</a></p>
+  </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label">Who We Are</div>
-  <h2 class="section-title">A Technology Partner,<br>Not Just a Dev Shop</h2>
-  <div class="about-grid">
-    <div class="about-body">
-      <p>GoAppsters Private Limited was founded on a simple belief — businesses deserve a technology partner that thinks beyond the brief. We don't just write code. We understand your business, consult on the right approach, and build solutions that last.</p>
-      <p>Our journey started in 2001 with Visual Basic and early .NET, growing through every major technology wave — XML and structured publishing, mobile, cloud, blockchain, and now AI. That evolution isn't accidental. We stay at the frontier because our clients need us to.</p>
-      <p>We have delivered <strong>digital publishing training across 8 countries</strong>, led development teams for specialised domain applications, managed cloud infrastructure for businesses handling GB-scale file delivery, and built AI-powered, blockchain-integrated products — often combining all of these in a single solution.</p>
-      <p>Our longest client relationship spans <strong>over 14 years</strong>. That's not a coincidence — it's the result of being a partner people trust with their entire technology stack, not just a project.</p>
-    </div>
-    <div class="about-highlights">
-      <div class="highlight-item">
-        <h4>Long-Term Thinking</h4>
-        <p>We build for scale and sustainability, not quick delivery. Our oldest active client partnership has lasted over 14 years.</p>
-      </div>
-      <div class="highlight-item">
-        <h4>Technology Leadership</h4>
-        <p>We consult, architect and lead — not just execute. If you need someone to guide your product decisions, we step into that role.</p>
-      </div>
-      <div class="highlight-item">
-        <h4>Full Ownership</h4>
-        <p>From database modelling to cloud infrastructure to customer support — we take full ownership across the stack so you don't have to manage multiple vendors.</p>
-      </div>
-      <div class="highlight-item">
-        <h4>Always Current</h4>
-        <p>24 years in tech means we've seen trends come and go. When we adopt something new — like AI or blockchain — it's because it genuinely delivers value.</p>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
-<hr class="divider">
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-label">What We Do</div>
-  <h2 class="section-title">Full-Spectrum<br>Technology Services</h2>
-  <div class="services-grid">
-    <div class="service-card">
-      <span class="service-icon">⚡</span>
-      <h3>Full Stack Development</h3>
-      <p>End-to-end web and mobile application development using the latest technology stacks, built for performance and scale.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">🤖</span>
-      <h3>AI-Powered Solutions</h3>
-      <p>Integrating AI into real products — image recognition, intelligent automation, AI agents and AI-assisted development pipelines that ship to production.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">🔗</span>
-      <h3>Blockchain & Web3</h3>
-      <p>Crypto token integration, blockchain-based application architecture and Web3 product development.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">☁️</span>
-      <h3>Cloud Architecture (AWS)</h3>
-      <p>Server infrastructure, WAF, load balancing, large-scale file delivery systems and full AWS account management.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">📱</span>
-      <h3>Mobile App Development</h3>
-      <p>Native and cross-platform mobile applications for iOS and Android, from concept through to production.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">🧭</span>
-      <h3>Tech Leadership & Consulting</h3>
-      <p>For businesses without an in-house tech team — we consult on architecture, lead developers and guide product decisions from the inside.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">🛒</span>
-      <h3>Ecommerce Development</h3>
-      <p>Custom ecommerce platforms, marketplace development and digital product delivery infrastructure built for real scale.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">🗄️</span>
-      <h3>Database Architecture</h3>
-      <p>Selecting and modelling the right database for the right problem — from relational to graph databases like Neo4j for complex relationship-driven applications.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- TECH STACK -->
-<section id="tech">
-  <div class="section-label">Technology</div>
-  <h2 class="section-title">Our Tech Stack</h2>
-  <div class="tech-categories">
-    <div class="tech-category">
-      <h4>AI & Machine Learning</h4>
-      <div class="tech-pills">
-        <span class="tech-pill featured">AWS Rekognition</span>
-        <span class="tech-pill featured">OpenAI / GPT</span>
-        <span class="tech-pill featured">AI Agents</span>
-        <span class="tech-pill">Computer Vision</span>
-        <span class="tech-pill">Image Classification</span>
-        <span class="tech-pill">AI-Assisted Development</span>
-      </div>
-    </div>
-    <div class="tech-category">
-      <h4>Blockchain & Web3</h4>
-      <div class="tech-pills">
-        <span class="tech-pill featured">Solidity</span>
-        <span class="tech-pill featured">Crypto Token Development</span>
-        <span class="tech-pill">Smart Contracts</span>
-        <span class="tech-pill">Web3 Integration</span>
-        <span class="tech-pill">DApp Development</span>
-      </div>
-    </div>
-    <div class="tech-category">
-      <h4>Cloud & Infrastructure</h4>
-      <div class="tech-pills">
-        <span class="tech-pill featured">AWS EC2</span>
-        <span class="tech-pill featured">AWS WAF</span>
-        <span class="tech-pill featured">Load Balancing</span>
-        <span class="tech-pill">AWS S3</span>
-        <span class="tech-pill">CloudFront CDN</span>
-        <span class="tech-pill">Large File Delivery</span>
-        <span class="tech-pill">Server Management</span>
-      </div>
-    </div>
-    <div class="tech-category">
-      <h4>Web & Mobile Development</h4>
-      <div class="tech-pills">
-        <span class="tech-pill featured">React</span>
-        <span class="tech-pill featured">Node.js</span>
-        <span class="tech-pill featured">React Native</span>
-        <span class="tech-pill">REST APIs</span>
-        <span class="tech-pill">PHP</span>
-        <span class="tech-pill">.NET</span>
-        <span class="tech-pill">JavaScript / TypeScript</span>
-        <span class="tech-pill">Python</span>
-      </div>
-    </div>
-    <div class="tech-category">
-      <h4>Databases</h4>
-      <div class="tech-pills">
-        <span class="tech-pill featured">Neo4j (Graph DB)</span>
-        <span class="tech-pill">MySQL</span>
-        <span class="tech-pill">PostgreSQL</span>
-        <span class="tech-pill">MongoDB</span>
-        <span class="tech-pill">Redis</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- INDUSTRIES -->
-<section id="industries">
-  <div class="section-label">Industries</div>
-  <h2 class="section-title">Sectors We've<br>Worked Across</h2>
-  <div class="industries-wrap">
-    <div class="industry-pill">Music & Digital Instruments</div>
-    <div class="industry-pill">Social & Dating</div>
-    <div class="industry-pill">Waste Management & Field Ops</div>
-    <div class="industry-pill">Logistics & Mobility</div>
-    <div class="industry-pill">Actuarial & Financial Services</div>
-    <div class="industry-pill">Scrap & Recycling Marketplace</div>
-    <div class="industry-pill">Digital Publishing</div>
-    <div class="industry-pill">Crypto & Web3</div>
-    <div class="industry-pill">Ecommerce & Retail</div>
-	<div class="industry-pill">Education</div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-wrap">
-    <div>
-      <div class="section-label">Get In Touch</div>
-      <h2>Let's Build Something Together</h2>
-      <p>Whether you have a product idea, need a technology partner, or want to add AI and cloud capabilities to your existing systems — we'd love to hear from you.</p>
-    </div>
-    <div class="contact-details">
-      <div class="contact-item">
-        <span class="contact-item-label">Company</span>
-        <span class="contact-item-value">GoAppsters Private Limited</span>
-      </div>
-      <div class="contact-item">
-        <span class="contact-item-label">Email</span>
-        <span class="contact-item-value"><a href="mailto:info@goappsters.in">info@goappsters.in</a></span>
-      </div>
-      <div class="contact-item">
-        <span class="contact-item-label">Specialisations</span>
-        <span class="contact-item-value" style="font-size:0.875rem;font-weight:400;color:var(--muted);">Full Stack · AI · Blockchain · AWS · Mobile</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-</div>
-
-<footer>
-  <p>&copy; 2026 GoAppsters Private Limited. All rights reserved.</p>
-  <p>Building Digital Products Since 2001</p>
+<footer class="wrap">
+  <p>GoAppsters Private Limited · Greater Noida, India · © 2026</p>
+  <p>Building software since 2001.</p>
 </footer>
 
 </body>
